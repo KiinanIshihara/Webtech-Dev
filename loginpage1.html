@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" content="width=device-width, initial-scale=1">
+    <title>⛩️Webtech Login Portal⛩️</title>
+    <link rel="stylesheet" href="css/masterStyle1.css">
+  </head>
+  <body>
+
+
+
+
+
+
+    <div class="splitLeft">
+    </div>
+
+
+    <div class="splitRight">
+      <div class="centered">
+        <div class="loginHeader"><em><b>Login to your account</b></em></div>
+
+
+        <form class="loginForm" action="" method="post">
+        <div class="containerlogin">
+            <label for="usrnm" style="font-size:15px; top: 0;"><b></b>Username/Email</label><br>
+            <input type="text" placeholder="Enter Username" name="userEmail"required><br>
+
+            <label for="pwd" style="font-size:15px; top: 0;">Password</label><br>
+            <input type="password" placeholder="Enter Password" name="userPwd" required><br>
+
+
+            <label class="rememberMe" style="font-size:12px;">
+              <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+
+
+
+
+            <span class="forgotpwd"><a href="#" style="font-size:12px;">Forgot password?</a></span> <br>
+            <br>
+            <br>
+            <div class="loginButton">
+              <button type="submit" class="loginBttn"><strong>Login now</strong></button>
+            </div>
+
+            <br>
+            <br>
+
+            <div class="noAccText" style="font-size:12px;">Don't have an account? <a href="#" onclick="document.getElementById('id01').style.display='block'"  style="width:auto;">Signup Now</a></div>
+        </form>
+      </div>
+    </div>
+
+
+              <!-- The Modal -->
+              <div id="id01" class="modal">
+                <span onclick="document.getElementById('id01').style.display='none'"
+              class="close" title="Close Modal">&times;</span>
+
+              <!-- Modal Content -->
+                <form class="modal-content animate" action="" id="modalSignupForm">
+
+
+                <div class="containerModalSignup">
+                  <label for="emale"><b>Email</b></label><br>
+                  <input form="modalSignupForm" type="email" placeholder="Enter Email" name="emale" required><br>
+
+
+                  <label for="uname"><b>New Username</b></label><br>
+                  <input form="modalSignupForm" type="text" placeholder="Enter Username" name="uname" required><br>
+
+
+                  <label for="psw"><b>Password</b></label><br>
+                <input form="modalSignupForm" type="password" placeholder="Enter Password" name="psw" required><br>
+
+
+                <label for="cnfrmpsw"><b>Confirm Password</b></label><br>
+                <input form="modalSignupForm" type="password" placeholder="Enter Same Password" name="cnfrmpsw" required><br>
+                <!-- Need to implement new password and confirm password verification function through JS -->
+
+              </div>
+
+              <div class="container" style="background-color:#852665; border-radius:0px 0px 10px 10px;">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                <button type="submit" form="modalSignupForm" style="font-family: myFirstFont; float:right;" class="signupbtn">Signup</button></span>
+
+              </div>
+                </form>
+              </div>
+
+
+
+
+
+        </div>
+
+
+
+<script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+
+</html>
