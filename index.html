@@ -7,27 +7,24 @@
   </head>
   <body>
 
-
-
-
-
-
     <div class="splitLeft">
     </div>
 
 
     <div class="splitRight">
+
       <div class="centered">
         <div class="loginHeader"><em><b>Login to your account</b></em></div>
+
 
 
         <form class="loginForm" action="" method="post">
         <div class="containerlogin">
             <label for="usrnm" style="font-size:15px; top: 0;"><b></b>Username/Email</label><br>
-            <input type="text" placeholder="Enter Username" name="userEmail"required><br>
+            <input type="text" placeholder="Enter Username" name="userNm" id="username" oninput="nextInput()"  autofocus required><br>
 
             <label for="pwd" style="font-size:15px; top: 0;">Password</label><br>
-            <input type="password" placeholder="Enter Password" name="userPwd" required><br>
+            <input type="password" placeholder="Enter Password" name="userPwd" id="password" oninput="afterPwd()" required><br>
 
 
             <label class="rememberMe" style="font-size:12px;">
@@ -41,7 +38,7 @@
             <br>
             <br>
             <div class="loginButton">
-              <button type="submit" class="loginBttn"><strong>Login now</strong></button>
+              <input type="button" class="loginBttn" value="Login now" onfocus="loginEnter()" onclick="validate()" id="login"></button>
             </div>
 
             <br>
@@ -63,20 +60,20 @@
 
 
                 <div class="containerModalSignup">
-                  <label for="emale"><b>Email</b></label><br>
-                  <input form="modalSignupForm" type="email" placeholder="Enter Email" name="emale" required><br>
+                  <label for="emale"><b>Email</b></label>
+                  <input form="modalSignupForm" type="email" placeholder="Enter Email" name="emale" required>
 
 
-                  <label for="uname"><b>New Username</b></label><br>
-                  <input form="modalSignupForm" type="text" placeholder="Enter Username" name="uname" required><br>
+                  <label for="uname"><b>New Username</b></label>
+                  <input form="modalSignupForm" type="text" placeholder="Enter Username" name="uname" required>
 
 
-                  <label for="psw"><b>Password</b></label><br>
-                <input form="modalSignupForm" type="password" placeholder="Enter Password" name="psw" required><br>
+                  <label for="psw"><b>Password</b></label>
+                <input form="modalSignupForm" type="password" placeholder="Enter Password" name="psw" required>
 
 
-                <label for="cnfrmpsw"><b>Confirm Password</b></label><br>
-                <input form="modalSignupForm" type="password" placeholder="Enter Same Password" name="cnfrmpsw" required><br>
+                <label for="cnfrmpsw"><b>Confirm Password</b></label>
+                <input form="modalSignupForm" type="password" placeholder="Enter Same Password" name="cnfrmpsw" required>
                 <!-- Need to implement new password and confirm password verification function through JS -->
 
               </div>
@@ -88,11 +85,6 @@
               </div>
                 </form>
               </div>
-
-
-
-
-
         </div>
 
 
@@ -107,6 +99,93 @@
       modal.style.display = "none";
     }
   }
+
+{
+  function nextInput() {
+    addEventListener('keydown', function(evt) {
+        var whichKey = checkKey(evt);
+        if (whichKey == 13) {
+            console.log('successful');
+            evt.preventDefault(); // if it's inside <form> tag, you don't want to submit it
+    document.getElementById('password').focus();
+        }
+        });
+    }
+    function checkKey(evt) {
+        console.log(evt.which);
+        return evt.which;
+    }
+  }
+
+
+
+    {
+      function afterPwd() {
+      addEventListener('keydown', function(evt) {
+          var whichKey = checkKey(evt);
+          if (whichKey == 13) {
+              console.log('successful');
+              evt.preventDefault(); // if it's inside <form> tag, you don't want to submit it
+      document.getElementById('login').focus();
+          }
+          });
+        }
+      function checkKey(evt) {
+          console.log(evt.which);
+          return evt.which;
+      }
+    }
+    
+
+      function loginEnter() {
+        // Get the input field
+var input = document.getElementById("login");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode == 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("login").click();
+    return;
+  }
+});
+      }
+
+
+  // simple login system
+  var attempt = 3; // Variable to count number of attempts.
+// Below function Executes on click of login button.
+function validate(){
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;
+if ( username == "Kiinan" && password == "password123"){
+alert ("Login successfully");
+window.location.href = "https://www.wisc.edu/"; // Redirecting to other page.
+return false;
+}
+else{
+attempt --;// Decrementing by one.
+document.getElementById('username').focus();
+  if (attempt > 0) {
+    alert("You have "+attempt+" attempt(s) left;");
+  }
+  else {
+    alert("You have no more attempts. Please try again later.")
+  }
+// Disabling fields after 3 attempts.
+if( attempt == 0){
+document.getElementById("username").disabled = true;
+document.getElementById("password").disabled = true;
+document.getElementById("submit").disabled = true;
+
+return false;
+}
+}
+}
+
 </script>
 
 </body>
